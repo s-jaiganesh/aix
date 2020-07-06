@@ -1,0 +1,31 @@
+---
+- hosts: all  
+  tasks:
+    - name: emgr preview remove - all lables
+      emgr:
+        label: all
+        state: absent
+        preview: True
+      register: emgr
+      become: true
+
+    - name: emgr remove - all lables
+      emgr:
+        label: all
+        state: absent
+        preview: False
+      register: emgr
+      become: true
+      
+    - name: Install IJ11544s0a.181127.epkg.Z
+      emgr:
+        package: /mnt/IJ11544s0a.181127.epkg.Z
+        state: present
+        
+    - name: Remove ifix with label IJ11544s0a
+      emgr:
+        label: IJ11544s0a
+        state: absent         
+        
+    - name: debug boot
+      debug: var=emgr
