@@ -1,3 +1,3 @@
-# Ansible Collection - gpc.hammer
+# Ansible Collection - aix.bosboot
 
 Documentation for the collection.
